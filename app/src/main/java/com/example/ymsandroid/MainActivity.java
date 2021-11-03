@@ -17,12 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
-    CalendarFragment calendarFragment;
-    ScheduleFragment scheduleFragment;
-    ToDoListFragment toDoListFragment;
-    UserFragment userFragment;
-
-    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         String userId = intent.getStringExtra("userID");
         String userPwd = intent.getStringExtra("userPWD");
 
-        bottomNavigationView = findViewById(R.id.bottom_navi);
+        bottomNavigationView = findViewById(R.id.bottom_menu);
 
         getSupportFragmentManager().beginTransaction().add(R.id.container, new ToDoListFragment()).commit();
 
