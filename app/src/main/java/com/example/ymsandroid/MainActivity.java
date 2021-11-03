@@ -2,7 +2,6 @@ package com.example.ymsandroid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +15,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    BottomNavigationView bottomNavigationView;
+
     CalendarFragment calendarFragment;
     ScheduleFragment scheduleFragment;
     ToDoListFragment toDoListFragment;
     UserFragment userFragment;
 
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,27 +32,29 @@ public class MainActivity extends AppCompatActivity {
         String userId = intent.getStringExtra("userID");
         String userPwd = intent.getStringExtra("userPWD");
 
-        calendarFragment = new CalendarFragment();
-        scheduleFragment = new ScheduleFragment();
-        toDoListFragment = new ToDoListFragment();
-        userFragment = new UserFragment();
+        bottomNavigationView = findViewById(R.id.bottom_navi);
 
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_menu);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-    }
+        getSupportFragmentManager().beginTransaction().add(R.id.container, new ToDoListFragment()).commit();
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    return false;
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.itmTdl:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new ToDoListFragment()).commit();
+                        break;
+                    case R.id.itmCal:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new CalendarFragment()).commit();
+                        break;
+                    case R.id.itmSch:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new ScheduleFragment()).commit();
+                        break;
+                    case R.id.itmUser:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, new UserFragment()).commit();
+                        break;
                 }
-            };
-}
-
-/*
-
-        return false;
-        }
+                return true;
+            }
         });
-*/
+    }
+}
