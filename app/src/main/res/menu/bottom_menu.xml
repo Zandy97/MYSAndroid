@@ -17,7 +17,7 @@
         android:title="달력"/>
 
     <item
-        android:id="@+id/itemSch"
+        android:id="@+id/itmSch"
         app:showAsAction="always"
         android:enabled="true"
         android:icon="@drawable/schedule"
@@ -25,7 +25,7 @@
     </item>
 
     <item
-        android:id="@+id/itemUser"
+        android:id="@+id/itmUser"
         app:showAsAction="always"
         android:enabled="true"
         android:icon="@drawable/user"
