@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.example.ymsandroid.fragment.CalendarFragment;
+import com.example.ymsandroid.fragment.ScheduleFragment;
+import com.example.ymsandroid.fragment.ToDoListFragment;
+import com.example.ymsandroid.fragment.UserFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.ymsandroid;
+package com.example.ymsandroid.fragment;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.ymsandroid.R;
 
 public class ToDoListFragment extends Fragment {
     @Override
