@@ -2,6 +2,7 @@ package com.example.ymsandroid;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     ToDoListFragment toDoListFragment;
     UserFragment userFragment;
 
-    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,27 +35,22 @@ public class MainActivity extends AppCompatActivity {
         toDoListFragment = new ToDoListFragment();
         userFragment = new UserFragment();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, toDoListFragment).commit();
-        BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
-        bottom_menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.itmTdl:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, toDoListFragment);
-                        return true;
-                    case R.id.itmCal:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, calendarFragment);
-                        return true;
-                    case R.id.itmSch:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, scheduleFragment);
-                        return true;
-                    case R.id.itmUser:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, userFragment);
-                        return true;
-                }
-                return false;
-            }
-        });
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_menu);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    return false;
+                }
+            };
 }
+
+/*
+
+        return false;
+        }
+        });
+*/
