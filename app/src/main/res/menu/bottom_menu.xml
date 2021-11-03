@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/itmTdl"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/todolist"
+        android:title="할일" />
+    <item
+        android:id="@+id/itmCal"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/calendar"
+        android:title="달력"/>
+
+    <item
+        android:id="@+id/itmSch"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/schedule"
+        android:title="시간표">
+    </item>
+
+    <item
+        android:id="@+id/itmUser"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/user"
+        android:title="내 정보">
+    </item>
+
+</menu>
