@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
     //서버 URL 설정
-    final static private String URL = "http://132.226.235.252/php/register.php";
+    final static private String URL = R.string.serverIP+"/php/register.php";
     private Map<String, String> map;
 
     public RegisterRequest(String userID, String userPWD, String userName, int userAge, Response.Listener<String> listener) {
