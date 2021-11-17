@@ -31,11 +31,10 @@ import java.util.List;
 
 public class ToDoListFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+//    private static final String ARG_PARAM1 = "param1";
+//    private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
+   private String mParam2;
     String userID;
 
     private OnFragmentInteractionListener mListener;
@@ -44,21 +43,14 @@ public class ToDoListFragment extends Fragment {
 
     }
 
-    public static ToDoListFragment newInstance(String param1, String param2){
-        ToDoListFragment fragment = new ToDoListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        if(getArguments() != null){
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        Bundle extra = this.getArguments();
+
+        if(extra != null) {
+            extra = getArguments();
+            String userID = extra.getString("userID");
         }
     }
 
@@ -74,10 +66,6 @@ public class ToDoListFragment extends Fragment {
         adapter = new ToDoListAdapter(getContext().getApplicationContext(), toDoListList);
         ingListView.setAdapter(adapter);
 
-        Bundle bundle = getArguments();
-        if(bundle != null){
-            userID = bundle.getString("userID");
-        }
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
         alert.setTitle("할일 페이지");
         alert.setMessage("아이디는 " + userID);
