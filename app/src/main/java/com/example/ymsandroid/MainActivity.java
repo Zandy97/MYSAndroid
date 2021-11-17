@@ -35,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.itmTdl:
-                        ToDoListFragment toDoListFragment = new ToDoListFragment();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("userID",userID);
-                        toDoListFragment.setArguments(bundle);
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, new ToDoListFragment()).commit();
                         break;
                     case R.id.itmCal:

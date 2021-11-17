@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,8 @@ public class ToDoListFragment extends Fragment {
 //    private static final String ARG_PARAM1 = "param1";
 //    private static final String ARG_PARAM2 = "param2";
 
-   private String mParam2;
-    String userID;
+//   private String mParam2;
+    private String userID;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,12 +47,8 @@ public class ToDoListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        Bundle extra = this.getArguments();
 
-        if(extra != null) {
-            extra = getArguments();
-            String userID = extra.getString("userID");
-        }
+        //Log.v("TodoList ID : ", userID);
     }
 
     private ListView ingListView;
@@ -77,6 +74,14 @@ public class ToDoListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+//        Bundle extra = this.getArguments();
+//
+//        if(extra != null) {
+//            extra = getArguments();
+//            userID = extra.getString("userID");
+//        }
+//
+//        Log.v("ToDoList 부분 아이디 받아온것은", userID);
         return inflater.inflate(R.layout.fragment_todolist, container, false);
     }
 
