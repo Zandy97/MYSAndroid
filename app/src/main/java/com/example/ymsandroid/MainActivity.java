@@ -23,12 +23,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        String userId = intent.getStringExtra("userID");
+        String userID = intent.getStringExtra("userID");
         String userPwd = intent.getStringExtra("userPWD");
 
         bottomNavigationView = findViewById(R.id.bottom_menu);
 
         getSupportFragmentManager().beginTransaction().add(R.id.container, new ToDoListFragment()).commit();
+
+        ToDoListFragment toDoListFragment = new ToDoListFragment();
+        Bundle bundle = new Bundle(1);
+        bundle.putString("userID",userID);
+        toDoListFragment.setArguments(bundle);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
