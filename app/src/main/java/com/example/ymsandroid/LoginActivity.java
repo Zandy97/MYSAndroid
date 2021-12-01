@@ -48,11 +48,9 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("status");
                             if(success == "true") { // 회원 로그인에 성공
-                                String rt = jsonObject.getString("item");
-                                Log.d("리턴 내용", rt);
-                                Toast.makeText(getApplicationContext(), rt, Toast.LENGTH_SHORT).show();
-                                String userID = jsonObject.getString("id");
-                                String userPWD = jsonObject.getString("pwd");
+                                JSONObject itemObject = jsonObject.getJSONObject("item");
+                                String userID = itemObject.getString("id");
+                                String userPWD = itemObject.getString("pwd");
 
                                 Toast.makeText(getApplicationContext(), "로그인에 성공!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
