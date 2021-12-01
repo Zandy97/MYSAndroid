@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,12 +43,16 @@ public class LoginActivity extends AppCompatActivity {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("리턴", response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if(success) { // 회원 등록에 성공
-                                String userID = jsonObject.getString("userID");
-                                String userPWD = jsonObject.getString("userPWD");
+                            String success = jsonObject.getString("status");
+                            if(success == "true") { // 회원 로그인에 성공
+                                String rt = jsonObject.getString("item");
+                                Log.d("리턴 내용", rt);
+                                Toast.makeText(getApplicationContext(), rt, Toast.LENGTH_SHORT).show();
+                                String userID = jsonObject.getString("id");
+                                String userPWD = jsonObject.getString("pwd");
 
                                 Toast.makeText(getApplicationContext(), "로그인에 성공!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
