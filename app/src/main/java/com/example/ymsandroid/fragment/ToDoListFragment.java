@@ -48,12 +48,21 @@ public class ToDoListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        //Log.v("TodoList ID : ", userID);
     }
 
     private ListView ingListView;
     private ToDoListAdapter adapter;
     private List<ToDoList> toDoListList;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_todolist, container, false);
+        Bundle bundle = getArguments();
+        userID = bundle.getString("userID");
+
+        return view;
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle saveInstanceState){
@@ -68,21 +77,6 @@ public class ToDoListFragment extends Fragment {
         alert.setMessage("아이디는 " + userID);
         AlertDialog alertDialog = alert.create();
         alertDialog.show();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        Bundle extra = this.getArguments();
-//
-//        if(extra != null) {
-//            extra = getArguments();
-//            userID = extra.getString("userID");
-//        }
-//
-//        Log.v("ToDoList 부분 아이디 받아온것은", userID);
-        return inflater.inflate(R.layout.fragment_todolist, container, false);
     }
 
     public void onButtonPressed(Uri uri){
