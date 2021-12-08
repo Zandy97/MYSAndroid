@@ -20,7 +20,6 @@ public class LoginRequest extends StringRequest {
         map = new HashMap<>();
         map.put("id", userID);
         map.put("pwd", userPWD);
-        Log.d("포스트", String.valueOf(map));
     }
 
     @Override

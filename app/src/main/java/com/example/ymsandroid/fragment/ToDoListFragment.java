@@ -58,9 +58,9 @@ public class ToDoListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todolist, container, false);
-//        Bundle bundle = getArguments();
-//        userID = bundle.getString("userID");
-//
+        Bundle bundle = getArguments();
+        userID = bundle.getString("userID");
+
         return view;
     }
 
@@ -72,11 +72,11 @@ public class ToDoListFragment extends Fragment {
         adapter = new ToDoListAdapter(getContext().getApplicationContext(), toDoListList);
         ingListView.setAdapter(adapter);
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-        alert.setTitle("할일 페이지");
-        alert.setMessage("아이디는 " + userID);
-        AlertDialog alertDialog = alert.create();
-        alertDialog.show();
+//        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+//        alert.setTitle("할일 페이지");
+//        alert.setMessage("아이디는 " + userID);
+//        AlertDialog alertDialog = alert.create();
+//        alertDialog.show();
     }
 
     public void onButtonPressed(Uri uri){

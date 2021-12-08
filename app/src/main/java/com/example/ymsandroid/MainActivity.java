@@ -18,6 +18,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private Fragment toDolistFragment, scheduleFragment, calendarFragment, userFragment;
+    final Bundle bundle = new Bundle();
+    String userID = "";
+    String userPWD = "";
+
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
-        String userPwd = intent.getStringExtra("userPWD");
-
-        Bundle bundle = new Bundle();
+        userID = intent.getStringExtra("userID");
+        userPWD = intent.getStringExtra("userPWD");
 
         FrameLayout frameLayout = findViewById(R.id.container);
         BottomNavigationView bottomView = findViewById(R.id.bottom_menu);
@@ -41,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         userFragment = new UserFragment();
 
         bundle.putString("userID",userID);
-        Log.d("setAgument", "userID값은 " + userID);
-        toDolistFragment.setArguments(bundle);
 //        scheduleFragment.setArguments(bundle);
 //        calendarFragment.setArguments(bundle);
 //        userFragment.setArguments(bundle);
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.itmTdl:
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, toDolistFragment).commit();
+                    toDolistFragment.setArguments(bundle);
                     return true;
                 case R.id.itmCal:
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, calendarFragment).commit();
