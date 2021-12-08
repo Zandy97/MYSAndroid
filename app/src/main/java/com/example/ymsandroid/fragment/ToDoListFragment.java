@@ -102,8 +102,7 @@ public class ToDoListFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             try {
-                target = R.string.serverIP+"/todolist.php?" +
-                        "userID=" + URLEncoder.encode(userID, "UTF-8");
+                target = "132.226.235.252/member/todoList";
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -70,7 +69,6 @@ public class RegisterActivity extends AppCompatActivity {
                 RegisterRequest registerRequest = new RegisterRequest(userID, userPWD, userName, userAge, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
-
             }
         });
     }

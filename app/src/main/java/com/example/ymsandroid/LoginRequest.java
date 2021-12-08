@@ -1,5 +1,7 @@
 package com.example.ymsandroid;
 
+import android.util.Log;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -18,6 +20,7 @@ public class LoginRequest extends StringRequest {
         map = new HashMap<>();
         map.put("id", userID);
         map.put("pwd", userPWD);
+        Log.d("포스트", String.valueOf(map));
     }
 
     @Override
