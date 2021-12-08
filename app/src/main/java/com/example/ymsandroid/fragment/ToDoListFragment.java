@@ -58,9 +58,9 @@ public class ToDoListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todolist, container, false);
-        Bundle bundle = getArguments();
-        userID = bundle.getString("userID");
-
+//        Bundle bundle = getArguments();
+//        userID = bundle.getString("userID");
+//
         return view;
     }
 

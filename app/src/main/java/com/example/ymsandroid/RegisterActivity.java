@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,9 +48,10 @@ public class RegisterActivity extends AppCompatActivity {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("리턴", response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
+                            boolean success = jsonObject.getBoolean("status");
                             if(success) { // 회원 등록에 성공
                                 Toast.makeText(getApplicationContext(), "회원 등록에 성공!" + "아이디는 " + userID + "비밀번호는 " + userPWD, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

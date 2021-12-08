@@ -1,12 +1,8 @@
 package com.example.ymsandroid;
 
-
-import androidx.annotation.Nullable;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,10 +15,10 @@ public class RegisterRequest extends StringRequest {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
-        map.put("userID", userID);
-        map.put("userPWD", userPWD);
-        map.put("userName", userName);
-        map.put("userAge", userAge + "");
+        map.put("id", userID);
+        map.put("pwd", userPWD);
+        map.put("name", userName);
+        map.put("age", userAge + "");
     }
 
     @Override
