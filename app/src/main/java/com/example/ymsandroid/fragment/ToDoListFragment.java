@@ -32,10 +32,6 @@ import java.util.List;
 
 public class ToDoListFragment extends Fragment {
 
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-
-//   private String mParam2;
     private String userID;
 
     private OnFragmentInteractionListener mListener;
@@ -58,9 +54,16 @@ public class ToDoListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todolist, container, false);
-        Bundle bundle = getArguments();
-        userID = bundle.getString("userID");
+        try {
+            userID = getArguments().getString("userID");
+        }catch (Exception e){
 
+        }
+        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+        alert.setTitle("할일 페이지");
+        alert.setMessage("아이디는 " + userID);
+        AlertDialog alertDialog = alert.create();
+        alertDialog.show();
         return view;
     }
 
@@ -71,12 +74,6 @@ public class ToDoListFragment extends Fragment {
         toDoListList = new ArrayList<ToDoList>();
         adapter = new ToDoListAdapter(getContext().getApplicationContext(), toDoListList);
         ingListView.setAdapter(adapter);
-
-//        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-//        alert.setTitle("할일 페이지");
-//        alert.setMessage("아이디는 " + userID);
-//        AlertDialog alertDialog = alert.create();
-//        alertDialog.show();
     }
 
     public void onButtonPressed(Uri uri){
@@ -130,7 +127,7 @@ public class ToDoListFragment extends Fragment {
                 if (count == 0){
                     AlertDialog dialog;
                     AlertDialog.Builder builder = new AlertDialog.Builder(ToDoListFragment.this.getContext());
-                    dialog = builder.setMessage("조회된 강의가 없습니다.")
+                    dialog = builder.setMessage("조회된 할일이 없습니다.")
                             .setPositiveButton("확인",null)
                             .create();
                     dialog.show();

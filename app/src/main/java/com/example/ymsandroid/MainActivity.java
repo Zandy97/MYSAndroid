@@ -18,7 +18,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private Fragment toDolistFragment, scheduleFragment, calendarFragment, userFragment;
-    final Bundle bundle = new Bundle();
     String userID = "";
     String userPWD = "";
 
@@ -44,12 +43,11 @@ public class MainActivity extends AppCompatActivity {
         calendarFragment = new CalendarFragment();
         userFragment = new UserFragment();
 
-        bundle.putString("userID",userID);
-//        scheduleFragment.setArguments(bundle);
-//        calendarFragment.setArguments(bundle);
-//        userFragment.setArguments(bundle);
-
         getSupportFragmentManager().beginTransaction().add(R.id.container, new ToDoListFragment()).commit();
+
+        Bundle bundle = new Bundle(1);
+        bundle.putString("userID",userID);
+        toDolistFragment.setArguments(bundle);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener listener
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.itmTdl:
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, toDolistFragment).commit();
-                    toDolistFragment.setArguments(bundle);
                     return true;
                 case R.id.itmCal:
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, calendarFragment).commit();

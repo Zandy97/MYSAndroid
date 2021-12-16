@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
                         } catch (JSONException e) { // 회원 등록에 실패
                             e.printStackTrace();
                         }
-                        //testing
                     }
                 };
 
